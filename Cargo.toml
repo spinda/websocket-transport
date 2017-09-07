@@ -1,0 +1,39 @@
+[package]
+name = "websocket-transport"
+version = "0.1.0"
+authors = ["Michael Smith <michael@spinda.net>"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+keywords = ["websocket", "web", "socket", "transport", "tokio", "future", "futures", "async"]
+repository = "https://github.com/spinda/websocket-transport"
+homepage = "https://github.com/spinda/websocket-transport"
+documentation = "https://docs.rs/websocket-transport/0.1.0"
+description = """
+Easy async WebSocket wrapper which implements Stream + Sink for String
+"""
+categories = ["network-programming"]
+
+[badges]
+travis-ci = { repository = "spinda/websocket-transport" }
+appveyor = { repository = "spinda/websocket-transport" }
+
+[dependencies]
+futures = "0.1"
+
+# Select the minimum subset of features we need, so we don't force the inclusion
+# of eg. TLS support unnecessarily.
+[dependencies.websocket]
+version = "0.20"
+default-features = false
+features = ["async"]
+
+[dependencies.clippy]
+version = "*"
+optional = true
+
+[dev-dependencies]
+tokio-core = "0.1"
+
+[features]
+default = []
+strict = ["clippy"]
